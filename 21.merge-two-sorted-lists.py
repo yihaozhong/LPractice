@@ -20,6 +20,8 @@ class Solution(object):
         """
         prehead = ListNode(-1)
         prev = prehead
+        # prev and prehead is the two pointer for a dummy head
+        
         while list1 and list2:
             if list1.val < list2.val:
                 prev.next = list1
