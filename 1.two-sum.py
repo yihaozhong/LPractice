@@ -12,13 +12,21 @@ class Solution(object):
         :type target: int
         :rtype: List[int]
         """
+        # dict = {}
+        # for i, ele in enumerate(nums):
+        #     comp_ele = target - ele
+        #     if comp_ele in dict:
+        #         return [dict[comp_ele], i]
+        #     else:
+        #         dict[ele] = i
+
         dict = {}
         for i, ele in enumerate(nums):
             comp_ele = target - ele
             if comp_ele in dict:
                 return [dict[comp_ele], i]
             else:
-                dict[ele] = i
+                dict[ele] = i 
 
     
         
