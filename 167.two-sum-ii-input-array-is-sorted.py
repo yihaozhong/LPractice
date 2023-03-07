@@ -3,7 +3,9 @@
 #
 # [167] Two Sum II - Input Array Is Sorted
 #
-
+# f it is less than target, we increase the smaller index by one. 
+# If it is greater than target, we decrease the larger index by one. 
+# Move the indices and repeat the comparison until the solution is found.
 # @lc code=start
 class Solution:
     def twoSum(self, numbers: List[int], target: int) -> List[int]:
