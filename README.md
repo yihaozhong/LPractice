@@ -1,3 +1,3 @@
 # LPractice
 
-## I take notes and track of algo questions here
+notes and a track of algo questions
