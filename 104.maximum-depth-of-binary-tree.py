@@ -15,27 +15,33 @@ class Solution:
     res = 0
     curDepth = 0
     def maxDepth(self, root: Optional[TreeNode]) -> int:
-        def traverse(root):
-            # base
-            if(root is None):
-                return 
+        # def traverse(root):
+        #     # base
+        #     if(root is None):
+        #         return 
             
-            # pre-order
-            self.curDepth += 1
+        #     # pre-order
+        #     self.curDepth += 1
 
-                # if this is the end leaf
-            if (root.left is None) and (root.right is None):
-                self.res = max(self.res, self.curDepth)
+        #         # if this is the end leaf
+        #     if (root.left is None) and (root.right is None):
+        #         self.res = max(self.res, self.curDepth)
             
-            traverse(root.left)
-            traverse(root.right)
+        #     traverse(root.left)
+        #     traverse(root.right)
 
-            # post-order
-            self.curDepth -= 1
+        #     # post-order
+        #     self.curDepth -= 1
         
-        traverse(root)
+        # traverse(root)
 
-        return self.res
+        # return self.res
+
+        def traverse(root):
+            if root is None:
+                return 0
+            return max(traverse(root.left), traverse(root.right)) + 1
+        return traverse(root) if root else 0
 
     # O(N)
     # O(1)
