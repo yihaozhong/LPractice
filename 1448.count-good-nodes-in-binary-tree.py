@@ -13,18 +13,30 @@
 #         self.right = right
 class Solution:
     def goodNodes(self, root: TreeNode) -> int:
-
-        def dfs(node, max_so_far):
-            nonlocal num_good_nodes
-            if max_so_far <= node.val:
-                num_good_nodes += 1
-            if node.right:
-                dfs(node.right, max(node.val, max_so_far))
-            if node.left:
-                dfs(node.left, max(node.val, max_so_far))
+        # sol 1. with global var
+        # def dfs(node, max_so_far):
+        #     nonlocal num_good_nodes
+        #     if max_so_far <= node.val:
+        #         num_good_nodes += 1
+        #     if node.right:
+        #         dfs(node.right, max(node.val, max_so_far))
+        #     if node.left:
+        #         dfs(node.left, max(node.val, max_so_far))
         
-        num_good_nodes = 0
-        dfs(root, float('-inf'))
-        return num_good_nodes
-# @lc code=end
+        # num_good_nodes = 0
+        # dfs(root, float('-inf'))
+        # return num_good_nodes
+        
+        def dfs(node, max_so_far):
+            total = 0
+            if node is None:
+                return 0
+            if max_so_far <= node.val:
+                total += 1
+        
+            total += dfs(node.left, max(max_so_far, node.val))
+            total += dfs(node.right, max(max_so_far, node.val))
+            return total
+        return dfs(root, float('-inf'))
+            
 
