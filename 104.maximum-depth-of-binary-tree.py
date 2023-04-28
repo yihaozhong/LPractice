@@ -37,11 +37,32 @@ class Solution:
 
         # return self.res
 
+        # sol 2. 
+
+        # def traverse(root):
+        #     if root is None:
+        #         return 0
+        #     return max(traverse(root.left), traverse(root.right)) + 1
+        # return traverse(root) if root else 0
+
+        # sol 3.
+        # def traverse(root, depth):
+        #     if root is None:
+        #         return depth
+        #     left = traverse(root.left, depth + 1)
+        #     right = traverse(root.right, depth + 1)
+
+        #     return max(left, right)
+        # return traverse(root, 0)
+
+
+        # sol 4. 
         def traverse(root):
-            if root is None:
-                return 0
-            return max(traverse(root.left), traverse(root.right)) + 1
-        return traverse(root) if root else 0
+            if root is None: return 0
+            left = traverse(root.left) + 1
+            right = traverse(root.right) + 1
+            return max(left, right)
+        return traverse(root)
 
     # O(N)
     # O(1)
