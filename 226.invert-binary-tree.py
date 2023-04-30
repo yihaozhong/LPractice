@@ -14,14 +14,26 @@
 class Solution:
     def invertTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
         
+        # def traverse(root):
+        #     if root is None:
+        #         return
+        #     root.left, root.right = root.right, root.left
+        #     traverse(root.left)
+        #     traverse(root.right)
+
+        # traverse(root)
+        # return root
+
+
         def traverse(root):
             if root is None:
-                return
+                return None
             root.left, root.right = root.right, root.left
             traverse(root.left)
             traverse(root.right)
-
+        
         traverse(root)
+
         return root
 
     # O(N)
