@@ -21,19 +21,22 @@ class Solution:
     def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
         def traverse(root: 'TreeNode', le: int, ri: int):
             # in order traversal 
+            if root is None:
+                print("hi")
+                return root
             
             if root.val < le:
                 
                 return traverse(root.right, le, ri)
             
-            if le < root.val < ri:
+            elif le <= root.val <=ri:
                 
                 return root
 
             elif root.val > ri:
                 return traverse(root.left, le, ri)
 
-            return root
+            
         
         if p.val < q.val:
             left = p.val
