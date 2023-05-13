@@ -14,6 +14,29 @@
 
 class Solution:
     def lowestCommonAncestor(self, root: 'TreeNode', nodes: 'List[TreeNode]') -> 'TreeNode':
+        """
+        和LC236类似, 只是检查公共祖先就是我自己的时候有变化
+
+        Time: O(N)
+        Space: O(N)
+        """
+        nodes_set = set(nodes)
         
+        def dfs(node):
+            if node is None:
+                return None
+            if node in nodes_set: # 可在前序位置，也可后
+                return node
+            
+            left = dfs(node.left)
+            right = dfs(node.right)
+            
+            if left and right:
+                return node
+            else:
+                return left or right
+        
+        return dfs(root)
+
 # @lc code=end
 
