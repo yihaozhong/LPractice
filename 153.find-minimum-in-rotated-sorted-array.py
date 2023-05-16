@@ -25,6 +25,10 @@ class Solution:
         #         left = mid + 1
         #     else:
         #         right = mid -1
+
+
+        # find the first True in False list 
+        
         if len(nums) == 1:
             return nums[0]
         left, right = 0, len(nums)-1
