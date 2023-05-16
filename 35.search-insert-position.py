@@ -19,7 +19,17 @@ class Solution:
                 left = mid + 1
         return left # return mid give error
         """
+        """
+        left, right = 0, len(nums)
+        while left < right:
+            mid = left + (right - left) // 2
+            if nums[mid] >= target:
+                right = mid
+            else:
+                left = mid + 1
+        return left
         
+        """
         ans = 0
         left, right = 0, len(nums) - 1
         while left <= right:
