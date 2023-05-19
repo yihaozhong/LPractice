@@ -22,8 +22,9 @@ class Solution:
             return traverse(root.left, minVal, root.val) and traverse(root.right, root.val, maxVal)
         return traverse(root, float('-inf'), float('inf'))
     
-        # O(N)
-        # O(N)
+        # O(N) since we visit each node exactly once.
+        # O(N) since we keep up to the entire tree.
+
 
         
 # @lc code=end
