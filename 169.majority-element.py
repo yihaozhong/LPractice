@@ -33,6 +33,9 @@ class Solution:
                 curr = nums[i+1] if i + 1 < len(nums) else None        # the next element is the new King
                 count = 0         # starting it with 0 because we can't increment the i of the for loop, the count will be 1 in next iteration, and again the battle continues after next iteration
         return curr # Boyer-Moore Voting Algorithm
+# 7, 7, 5, 7, 5, 1 | 1 n/2?
 
+# runs of 50 %
+#hat's why the majority element should be the leader of the last run and occupy more than 50% of it (otherwise the last run would not be the last).
 # @lc code=end
 
