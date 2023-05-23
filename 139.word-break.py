@@ -18,6 +18,7 @@ class Solution:
             ans = False
             for w in wordDict:
                 if s[start:].startswith(w):
+
                     ans = ans or dfs(start+len(w))
             
             memo[start] = ans
