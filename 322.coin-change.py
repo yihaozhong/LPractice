@@ -10,7 +10,7 @@ class Solution:
     def coinChange(self, coins: List[int], amount: int) -> int:
 
         
-        # # dp function
+        # # dp function - backtracking dfs
         # def dp(coins, amount):
         #     # base case
         #     if amount == 0:
