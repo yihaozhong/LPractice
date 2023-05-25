@@ -6,6 +6,8 @@
 
 # @lc code=start
 class Solution:
+    # O(N) Time Complexity, we travese each char in string once, operations on stack takes O(1)
+    # O(N) Space Complexity as we push all '(" in a stack at worst case
     def leftOf(self, char):
         if char == '}': return '{'
         elif char == ']': return '['
