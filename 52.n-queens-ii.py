@@ -1,18 +1,13 @@
 #
-# @lc app=leetcode id=51 lang=python3
+# @lc app=leetcode id=52 lang=python3
 #
-# [51] N-Queens
+# [52] N-Queens II
 #
 
 # @lc code=start
 class Solution:
-    def solveNQueens(self, n: int) -> List[List[str]]:
-        def create_board(state):
-            board = []
-            for row in state:
-                board.append("".join(row))
-            return board
-        
+    result = 0
+    def totalNQueens(self, n: int) -> int:
         def isValid(board, row, col):
             # 检查列是否有皇后互相冲突
             for i in reversed(range(row)):
@@ -38,8 +33,7 @@ class Solution:
 
         def backtracking(row, board):
             if row == n:
-                result.append(create_board(board))
-                #print(result)
+                self.result += 1
                 return
             
             for col in range(n):
@@ -50,10 +44,8 @@ class Solution:
                 board[row][col] = '.'
 
         empty_board = [["."] * n for _ in range(n)]
-        result = []
+        
         backtracking(0, empty_board)
-        return result
-    
-    # Time complexity: O(N!)
-    # Space complexity: O(N^2)
+        return self.result
 # @lc code=end
+
