@@ -3,10 +3,15 @@
 #
 # [40] Combination Sum II
 #
+"""
+As a reminder, backtracking is a general algorithm for finding all (or some) solutions to some computational problems. 
+The idea is that it incrementally builds candidates to the solutions, and abandons a candidate ("backtrack") as soon as it determines that the candidate cannot lead to a final solution.
 
+"""
 # @lc code=start
 class Solution:
     def combinationSum2(self, candidates: List[int], target: int) -> List[List[int]]:
+        # backtracking with counter 
         def backtrack(comb, remain, curr, counter, results):
             if remain == 0:
                 # make a deep copy of the current combination
@@ -42,5 +47,8 @@ class Solution:
                 counter = counter, results = results)
 
         return results
+    
+
+    # we can also do backtracking with index, just as 90 subset ii dedup
 # @lc code=end
 
