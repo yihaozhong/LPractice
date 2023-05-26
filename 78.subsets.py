@@ -19,4 +19,21 @@ class Solution:
         result = []
         backtracking(0, [])
         return result
+    
+    # O(n⋅2^n): in the worst case (array consists of nnn distinct elements), the total number of recursive function calls will be 2 ^ n 
+    # for each function call, it is O(n) for path operations
+
+    # Space complexity: O(n)
+    # The recursion call stack occupies at most O(n)
+ 
+
+ # sol 2: cascading (adding) , O(n⋅2^n), O(n⋅2^n)
+#  def subsets(self, nums: List[int]) -> List[List[int]]:
+#         n = len(nums)
+#         output = [[]]
+        
+#         for num in nums:
+#             output += [curr + [num] for curr in output]
+        
+#         return output
 # @lc code=end
