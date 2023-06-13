@@ -1,4 +1,4 @@
 # LPractice
 
-notes and a track of algo question. Mainly use python and sql
+notes and a track of algo question.
 
