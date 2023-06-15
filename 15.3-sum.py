@@ -16,8 +16,6 @@ class Solution:
         #         while(lo < hi):
                     
         #             mySum = nums[lo] + nums[hi] + nums[i]
-        #             # if (nums[hi] == nums[i]) or (nums[hi] == nums[lo]) or (nums[lo] == nums[i]):
-        #             #     break
         #             if mySum < 0:
         #                 lo += 1
         #             elif mySum > 0:
@@ -70,10 +68,14 @@ class Solution:
                 for j, val2 in enumerate(nums[i+1:]):
                     complement = -val1 - val2
                     if complement in seen and seen[complement] == i:
+                        # ensure that the complement found is from a number in the array that comes after val1 and val2, thus avoiding using the same number twice. 
+                        # Remember, the requirement is to find three different numbers that sum up to zero.
                         res.add(tuple(sorted((val1, val2, complement))))
                     seen[val2] = i
         return res
         # O(N^2) same reason above
         # O(n) for hashset
+
+        # the algorithm is allowed to use the 2 at index 3 in nums twice: once for val2 and once for the complement
 # @lc code=end
 
