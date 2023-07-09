@@ -1,6 +1,6 @@
 # LPractice
 
-notes and a track of algo question.
+notes and a track of algorithm questions.
 
-First review on June 25, 2023
+First review on June 25, 2023.
 
