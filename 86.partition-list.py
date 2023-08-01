@@ -34,9 +34,12 @@ class Solution(object):
             temp = p.next
             p.next = None
             p = temp
+            # p = p.next
         
         p1.next = dummy_p2.next
         return dummy_p1.next
+    
+    # revisit jul 31
 
         
 # @lc code=end
