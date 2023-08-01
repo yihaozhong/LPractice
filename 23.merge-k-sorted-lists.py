@@ -49,7 +49,30 @@ class Solution(object):
             if node:
                 pq.put(Wrapper(node), node)
 
-        return dummy_p.next
-        
+        return dummy_p.
+    
+    # sol 2
+    """
+        if not lists:
+        return None
+    # 虚拟头结点
+        dummy = ListNode(-1)
+        p = dummy
+        # 优先级队列，最小堆
+        pq = []
+        for head in lists:
+            if head:
+                heapq.heappush(pq, (head.val, head))
+
+        while pq:
+            # 获取最小节点，接到结果链表中
+            node = heapq.heappop(pq)[1]
+            p.next = node
+            if node.next:
+                heapq.heappush(pq, (node.next.val, node.next))
+            # p 指针不断前进
+            p = p.next
+        return dummy.next
+    """
 # @lc code=end
 
