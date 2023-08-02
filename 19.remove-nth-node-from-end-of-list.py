@@ -23,7 +23,7 @@ class Solution(object):
         # use a two pointer
         # first pointer to the kth positon first
         p1 = head
-        for _ in range(n): #  stand to n th
+        for _ in range(n):  # stand to n th
             p1 = p1.next
 
         p2 = head
@@ -41,6 +41,7 @@ class Solution(object):
 
         p2.next = p2.next.next
         return dummy_p.next
-        
-# @lc code=end
 
+    # revisit aug 1
+
+# @lc code=end
