@@ -25,10 +25,11 @@ class Solution(object):
             slow = slow.next
         return slow # point to the middle
         
+
     # O(N) in time, where N is the number of nodes in the given list.
     # O(1) in space,  the space used by slow and fast
 
-
+# revisit 8/1
 
 # @lc code=end
 
