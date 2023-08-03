@@ -23,6 +23,8 @@ class Solution:
             fast += 1
 
         return slow+1
+    # increase slow first, then assign slow to fast,
+    # this will remove duplicates, 1112 -> 12
 
 
 # @lc code=end
