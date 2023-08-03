@@ -18,6 +18,6 @@ class Solution:
         return slow
 
     # time: O(n)
-        
+    # revisit 8/3
 # @lc code=end
 
