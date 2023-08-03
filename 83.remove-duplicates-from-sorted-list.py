@@ -17,7 +17,7 @@ class Solution:
         if head is None:
             return head
 
-        while(fast):
+        while (fast):
             if (fast.val != slow.val):
                 # nums[slow] = nums[fast];
                 slow.next = fast
@@ -39,4 +39,3 @@ class Solution:
     #     else:
     #         cur= cur.next
 # @lc code=end
-
