@@ -19,9 +19,9 @@ class NumArray:
 
     # O(1) per queries, O(N) pre-computation
     # O(n) space
-    
+
+    # revisit 8/4
 # Your NumArray object will be instantiated and called as such:
 # obj = NumArray(nums)
 # param_1 = obj.sumRange(left,right)
 # @lc code=end
-
