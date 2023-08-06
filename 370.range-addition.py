@@ -6,7 +6,10 @@
 
 # @lc code=start
 class Solution:
-    
+    '''
+    差分数组和原数组包含的信息是相同的，只是形式不同而已。差分数组中每一个元素都是前面的元素的和，它自带递推的结构。
+    递推的特点是只需要知道第一个元素的信息就可以得到后面的信息，即第一个对象的信息会影响后面的所有对象的信息。而常规数组的各个元素之间的关系是独立的。
+    '''
     def getModifiedArray(self, length: int, updates: List[List[int]]) -> List[int]:
         ans = [0] * length
 
