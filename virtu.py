@@ -36,3 +36,29 @@ def to_fibonacci(x):
         return fibonacci_numbers[low]
     else:
         return fibonacci_numbers[low] if (fibonacci_numbers[low] - x) < (x - fibonacci_numbers[high]) else fibonacci_numbers[high]
+
+
+def max_apple(A):
+    # return maximum apple that could fit in the box, A[0] is the capacility
+    cap = 5000 - A[0]
+    apples = A[1:]
+    apples.sort()
+    total, cnt = 0, 0
+
+    for a in apples:
+        if total + a <= cap:
+            total += a
+            cnt += 1
+        else:
+            break
+    return cnt
+
+
+test_cases = [
+    [4850, 100, 30, 30, 100, 50, 100],
+    [5, 1, 1, 1, 1, 2, 2],
+    [20, 10, 5, 5, 2, 2, 2]
+]
+
+results = [max_apple(case) for case in test_cases]
+print(results)
