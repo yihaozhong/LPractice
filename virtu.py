@@ -53,12 +53,21 @@ def max_apple(A):
             break
     return cnt
 
-
-test_cases = [
-    [4850, 100, 30, 30, 100, 50, 100],
-    [5, 1, 1, 1, 1, 2, 2],
-    [20, 10, 5, 5, 2, 2, 2]
-]
-
-results = [max_apple(case) for case in test_cases]
-print(results)
+def toHexspeak(s):
+    # convert s to Hex, then 0 is o, 1 is l, hexspeak is that only has ABCDEFIO letters
+    
+    # Convert s to integer
+    num = int(s)
+    
+    # Convert integer to hexadecimal and convert to uppercase
+    hex_str = hex(num)[2:].upper()
+    
+    # Replace '0' with 'O' and '1' with 'L'
+    hex_str = hex_str.replace('0', 'O').replace('1', 'L')
+    
+    # Check for valid Hexspeak characters
+    for char in hex_str:
+        if char not in "ABCDEFILO":
+            return "ERROR"
+    
+    return hex_str
