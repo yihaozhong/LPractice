@@ -54,6 +54,7 @@ def max_apple(A):
     return cnt
 
 def toHexspeak(s):
+
     # convert s to Hex, then 0 is o, 1 is l, hexspeak is that only has ABCDEFIO letters
     
     # Convert s to integer
@@ -71,3 +72,29 @@ def toHexspeak(s):
             return "ERROR"
     
     return hex_str
+
+def final_score(arr):
+    # if a student sit between 2 better score, this student score increase 1
+    # if sit between 2 worse score, decrease 1
+    # repeat until no student change score
+    while True:
+        # Create a new list of adjusted scores
+        new_arr = arr.copy()
+        
+        for i in range(1, len(arr) - 1):  # Only adjust scores for students in between
+            # Check if the student is sitting between two better scores
+            if arr[i-1] > arr[i] and arr[i+1] > arr[i]:
+                new_arr[i] += 1
+            
+            # Check if the student is sitting between two worse scores
+            elif arr[i-1] < arr[i] and arr[i+1] < arr[i]:
+                new_arr[i] -= 1
+        
+        # If no scores changed, break the loop
+        if new_arr == arr:
+            break
+        
+        # Update the original array
+        arr = new_arr
+        
+    return arr
