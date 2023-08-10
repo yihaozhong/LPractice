@@ -98,3 +98,7 @@ def final_score(arr):
         arr = new_arr
         
     return arr
+
+def identicalSubstring(s):
+    # return the number of ways we can select non empty substring where all char of substring are identical 
+    
