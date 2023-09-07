@@ -26,3 +26,17 @@ def earlies(graph, start, end, current_time):
                     heapq.heappop(pq, (arrival, neighbor))
 
     return -1
+
+def find_roots(pairs):
+    child_nodes = set()
+
+    all_nodes = set()
+
+    for parent, child in pairs:
+        child_nodes.add(child)
+        all_nodes.add(parent)
+        all_nodes.add(child)
+
+    root_nodes = all_nodes - child_nodes
+
+    return list(root_nodes)
