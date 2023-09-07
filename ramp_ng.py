@@ -10,7 +10,7 @@ def level1(queries):
         for (key, field), expiry_time in ttl_dict.items():
             if timestamp >= expiry_time:
                 expired_entries.append((key, field))
-        
+
         for key, field in expired_entries:
             if key in database and field in database[key]:
                 del database[key][field]
@@ -19,12 +19,12 @@ def level1(queries):
     for query in queries:
         operation = query[0]
         timestamp = int(query[1])  # Convert the timestamp to integer
-        
+
         # Check and remove expired entries before each operation
         check_and_remove_expired(timestamp)
 
         key = query[2]
-        
+
         if operation == "SET":
             field = query[3]
             value = query[4]
@@ -61,16 +61,20 @@ def level1(queries):
 
         elif operation == "SCAN":
             if key in database:
-                fields_values = sorted(database[key].items(), key=lambda x: x[0])  # Sorting by field
-                results.append(", ".join([f"{field}({value})" for field, value in fields_values]))
+                fields_values = sorted(database[key].items(
+                ), key=lambda x: x[0])  # Sorting by field
+                results.append(
+                    ", ".join([f"{field}({value})" for field, value in fields_values]))
             else:
                 results.append("")
 
         elif operation == "SCAN_BY_PREFIX":
             prefix = query[3]
             if key in database:
-                fields_values = sorted(database[key].items(), key=lambda x: x[0])  # Sorting by field
-                results.append(", ".join([f"{field}({value})" for field, value in fields_values if field.startswith(prefix)]))
+                fields_values = sorted(database[key].items(
+                ), key=lambda x: x[0])  # Sorting by field
+                results.append(", ".join(
+                    [f"{field}({value})" for field, value in fields_values if field.startswith(prefix)]))
             else:
                 results.append("")
 
@@ -111,24 +115,24 @@ queries = [
 results = level1(queries)
 print(results)
 # Testing the function with some sample queries
-queries = [["SET_WITH_TTL","160000000","a","a","200","40"], 
- ["SET_WITH_TTL","160000010","a","d","100","60"], 
- ["SCAN","160000020","a"], 
- ["COMPARE_AND_SET","160000030","a","a","100","200"], 
- ["COMPARE_AND_SET_WITH_TTL","160000050","a","d","100","30","20"], 
- ["SET_WITH_TTL","160000060","a","d","20","2"], 
- ["COMPARE_AND_SET_WITH_TTL","160000065","a","d","20","50","5"], 
- ["SCAN_BY_PREFIX","160000068","a","a"], 
- ["SCAN","160000070","a"], 
- ["GET","160000072","a","d"], 
- ["SET","160000100","d","d","3"], 
- ["SCAN","160000170","d"], 
- ["COMPARE_AND_SET_WITH_TTL","160000200","d","d","3","30","10"], 
- ["SCAN","160000220","d"], 
- ["SET_WITH_TTL","160000300","d","d","100","30"], 
- ["COMPARE_AND_DELETE","160000310","d","d","100"], 
- ["SET","160000311","d","d","500"], 
- ["SCAN","160000400","a"], 
- ["SCAN","800000000","d"]]
+queries = [["SET_WITH_TTL", "160000000", "a", "a", "200", "40"],
+           ["SET_WITH_TTL", "160000010", "a", "d", "100", "60"],
+           ["SCAN", "160000020", "a"],
+           ["COMPARE_AND_SET", "160000030", "a", "a", "100", "200"],
+           ["COMPARE_AND_SET_WITH_TTL", "160000050", "a", "d", "100", "30", "20"],
+           ["SET_WITH_TTL", "160000060", "a", "d", "20", "2"],
+           ["COMPARE_AND_SET_WITH_TTL", "160000065", "a", "d", "20", "50", "5"],
+           ["SCAN_BY_PREFIX", "160000068", "a", "a"],
+           ["SCAN", "160000070", "a"],
+           ["GET", "160000072", "a", "d"],
+           ["SET", "160000100", "d", "d", "3"],
+           ["SCAN", "160000170", "d"],
+           ["COMPARE_AND_SET_WITH_TTL", "160000200", "d", "d", "3", "30", "10"],
+           ["SCAN", "160000220", "d"],
+           ["SET_WITH_TTL", "160000300", "d", "d", "100", "30"],
+           ["COMPARE_AND_DELETE", "160000310", "d", "d", "100"],
+           ["SET", "160000311", "d", "d", "500"],
+           ["SCAN", "160000400", "a"],
+           ["SCAN", "800000000", "d"]]
 
 print(level1(queries))
