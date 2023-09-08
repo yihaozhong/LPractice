@@ -110,3 +110,55 @@ class Datastructure:
 
     def get_mean(self):
         return self.total / len(self.values) if self.values else 0 
+    
+
+class PriceChecker:
+    def __init__(self):
+        # Initialize the quotes dictionary
+        self.quotes = {}
+
+    def observe_quote(self, broker, stock, bid_px, bid_qty, ask_px, ask_qty):
+        # If the broker is not in the dictionary, add it
+        if broker not in self.quotes:
+            self.quotes[broker] = {}
+        
+        # Store or update the stock quote for the given broker
+        self.quotes[broker][stock] = {
+            'bid_px': bid_px,
+            'bid_qty': bid_qty,
+            'ask_px': ask_px,
+            'ask_qty': ask_qty
+        }
+
+    def calculate_avg_price_to_buy(self, stock, num_shares):
+        # Collect all ask prices and quantities for the stock
+        all_asks = []
+        for broker_quotes in self.quotes.values():
+            if stock in broker_quotes:
+                quote = broker_quotes[stock]
+                all_asks.append((quote['ask_px'], quote['ask_qty']))
+
+        # Sort by price (lowest first)
+        all_asks.sort(key=lambda x: x[0])
+
+        total_cost = 0
+        shares_accumulated = 0
+
+        # Accumulate shares from the lowest available ask prices
+        for ask_px, ask_qty in all_asks:
+            if shares_accumulated + ask_qty >= num_shares:
+                needed_qty = num_shares - shares_accumulated
+                total_cost += needed_qty * ask_px
+                shares_accumulated += needed_qty
+                break
+            else:
+                total_cost += ask_qty * ask_px
+                shares_accumulated += ask_qty
+
+        # If not enough shares are available, return a message or handle accordingly
+        if shares_accumulated < num_shares:
+            return "Not enough shares available."
+
+        # Calculate the average price
+        avg_price = total_cost / num_shares
+        return avg_price
