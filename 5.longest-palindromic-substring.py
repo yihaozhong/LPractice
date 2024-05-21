@@ -1,5 +1,5 @@
 # @before-stub-for-debug-begin
-from python3problem5 import *
+# from python3problem5 import *
 from typing import *
 # @before-stub-for-debug-end
 
@@ -10,25 +10,27 @@ from typing import *
 #
 
 # @lc code=start
+
+
 class Solution:
     def longestPalindrome(self, s: str) -> str:
         # we use a two pointer with left right pointer from center
 
         def expandFromCenter(s, l, r):
-            while( (l>= 0) and (r< len(s)) and (s[l] == s[r])):
-                l-=1
-                r+=1
+            while ((l >= 0) and (r < len(s)) and (s[l] == s[r])):
+                l -= 1
+                r += 1
             return s[l+1: r]
-        
-        # if we enter l, l -> even palindrom, l, l+1 -> odd 
-        
+
+        # if we enter l, l -> even palindrom, l, l+1 -> odd
+
         # loop through the strinf
         result = ""
         for i in range(len(s)):
             str1 = expandFromCenter(s, i, i)
             str2 = expandFromCenter(s, i, i+1)
-            temp = str1 if len(str1)>len(str2) else str2
-            result = temp if len(temp)>len(result) else result
+            temp = str1 if len(str1) > len(str2) else str2
+            result = temp if len(temp) > len(result) else result
 
         return result
     '''
@@ -38,8 +40,11 @@ class Solution:
     
     如果输入相同的 l 和 r，就相当于寻找长度为奇数的回文串，如果输入相邻的 l 和 r，则相当于寻找长度为偶数的回文串
     '''
+
+    # unit test
+    # print(longestPalindrome("babd"))
+    # do we really need to loop all len(s)? -> case "eabcb"
     # time: O(N^2)
     # space: O(1)
 
 # @lc code=end
-
