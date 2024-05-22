@@ -7,6 +7,8 @@
 # @lc code=start
 class Solution:
     def maxArea(self, height: List[int]) -> int:
+        # two pointers 
+        # 一边收缩一边计算 [left, right] 之间的矩形面积，取最大的面积值即是答案。
         left, right = 0, len(height) - 1
         max_area = 0
         while left < right:
@@ -18,6 +20,8 @@ class Solution:
                 right -= 1
 
         return max_area
+    
+    
     
     # 你如果移动较低的那一边，那条边可能会变高，使得矩形的高度变大，进而就「有可能」使得矩形的面积变大；相反，如果你去移动较高的那一边，
     # 矩形的高度是无论如何都不会变大的，所以不可能使矩形的面积变得更大。
