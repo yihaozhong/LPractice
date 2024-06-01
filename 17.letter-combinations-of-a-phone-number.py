@@ -34,5 +34,18 @@ class Solution:
             return result
         dfs(0, [])
         return result
+    
+    # dfs -> backtesting
+    
+    """
+    def dfs(index, path):
+        if index == len(criteria):
+            result.append(''.join(path))
+        for child in node:
+            path.append(child)
+            dfs(index+1, path)
+            path.pop()
+    
+    """
 
 # @lc code=end
